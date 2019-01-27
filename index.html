@@ -61,7 +61,7 @@
             
             var addPadding = document.createElement("span");
             
-            addPadding.textContent = data.message;
+            addPadding.textContent = data;
            
             addPadding.className = "add_padding";
             dataTarget.appendChild(addPadding);
@@ -84,7 +84,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:name + ": " + text.value, sender_name:name},
+                data:{message:name + ": " + text.value},
                 success:function(data){
                     //alert(data);
                     text.value = "";
@@ -95,7 +95,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:name + ": " + text.value.split("=")[1], sender_name:name},
+                data:{message:name + ": " + text.value.split("=")[1]},
                 success:function(data){
                     //alert(data);
                     text.value = "adminSay=";
@@ -106,7 +106,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:name + ": " + text.value.split("=")[1], sender_name:name},
+                data:{message:name + ": " + text.value.split("=")[1]},
                 success:function(data){
                     //alert(data);
                     text.value = "adminSay=";

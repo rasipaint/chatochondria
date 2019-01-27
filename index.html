@@ -61,7 +61,9 @@
             
             var addPadding = document.createElement("span");
             
-            addPadding.textContent = data;
+            addPadding.textContent = data.message;
+                
+            if(data.sender_name = "Cole" || data.sender_name = "Cole McCarson" || data.sender_name = "Michael" || data.sender_name = "Michael McNulty" 
            
             addPadding.className = "add_padding";
             dataTarget.appendChild(addPadding);
@@ -84,7 +86,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:name + ": " + text.value},
+                data:{message:name + ": " + text.value, sender_name:name},
                 success:function(data){
                     //alert(data);
                     text.value = "";
@@ -95,7 +97,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:name + ": " + text.value.split("=")[1]},
+                data:{message:name + ": " + text.value.split("=")[1], sender_name:name},
                 success:function(data){
                     //alert(data);
                     text.value = "adminSay=";
@@ -106,7 +108,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:name + ": " + text.value.split("=")[1]},
+                data:{message:name + ": " + text.value.split("=")[1], sender_name:name},
                 success:function(data){
                     //alert(data);
                     text.value = "adminSay=";

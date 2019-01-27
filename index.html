@@ -39,7 +39,7 @@
    $.ajax({
        type:"POST",
        url:"https://jaydengames.000webhostapp.com/solo.php",
-       data:{message:name + " has joined this chat"}
+       data:{message:name + " has joined in on the conversation"}
    });
    
    var numOfText = 0;
@@ -115,13 +115,22 @@
         </script>
     </head>
     <body>
-        <div id = "nav">CCI ChatIt Live! Hosted By: www.cci.services</div>
+          <img src="https://raw.githubusercontent.com/colecci/chatter/master/logo.png" alt="Logo" height="39" width="39" class="center">
+        <style>
+            .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 4%;
+}
+            </style>
+        <div id = "nav">
+Hello,
+        </div>
         <div id = "wrap"></div>
         <div id = "chat"></div>
         <div id = "panel">
         <!--
-            <input id = "hashtag" placeholder = "#">
-        -->
             <input id = "text" placeholder = "Hey! Don't Just Sit There, Join The Conversation!" maxlength = "100">
             <div id = "send"></div>
             

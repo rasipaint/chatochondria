@@ -27,6 +27,8 @@
    var span = document.getElementsByTagName("span");
    
    var welcomeNote = document.createElement("span");
+            
+      document.getElementById("hey").innerHTML = "Hey, " + name;
    
    
    
@@ -126,7 +128,8 @@
 }
             </style>
         <div id = "nav">
-Hello, welcome to chatter beta!
+Hello, welcome to chatter beta!<br>
+            <span id="hey"></span>
         </div>
         <div id = "wrap"></div>
         <div id = "chat"></div>

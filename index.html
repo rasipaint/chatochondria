@@ -6,7 +6,7 @@
         <script src = "https://jaydengames.000webhostapp.com/jquery-3.3.1.min.js"></script>
         
         <script src = "https://jaydengames.000webhostapp.com/register.js"></script>
-        <style type="text/css">* {cursor: url(http://cur.cursors-4u.net/cursors/cur-11/cur1054.cur), auto !important;}</style><a href="http://www.cursors-4u.com/cursor/2012/02/12/chrome-pointer.html" target="_blank" title="Chrome Pointer"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Chrome Pointer" style="position:absolute; top: 0px; right: 0px;" /></a>
+        
         <script>
         startChat = function(user,_){
    
@@ -34,7 +34,7 @@
    
    welcomeNote.className = "non_mod_text";
    
-   welcomeNote.innerHTML = "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! We think that everyone's voice matters,so get out there and share your thoughts with the world! Before you get started with your journey, we would like you to know about our simple police/rule. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in name suspension and added blacklist characters. Admins can access/view all messages at all times and can suspend you if they feel it is necessary. The names Cole and Michael are administrator names that may not be used, sorry for any inconvenience with this. Thanks and have fun! Copyright 2019 by Coles Creations and Innovation and The MicMacro Technologies Group. All rights reserved.</span>";
+   welcomeNote.innerHTML = "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! We think that everyone's voice matters,so get out there and share your thoughts with the world! Before you get started with your journey, we would like you to know about our simple police/rule. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in name suspension and added blacklist characters. Admins can access/view all messages at all times and can suspend you if they feel it is necessary. The names Cole and Michael are administrator names that may not be used, sorry for any inconvenience with this. Thanks and have fun!</span>";
    
    chat.appendChild(welcomeNote);
    
@@ -108,7 +108,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message: "<span style='color:blue'>" + name + "-ADMIN: " + ": " + "</span>" + "<span style='color:darkgreen'>" + text.value.split("=")[1] + "</span>"},
+                data:{message: "<span style='color:blue'>" + "Site Admin " + name  + ": "+ "</span>" + "<span style='color:darkgreen'>" + text.value.split("=")[1] + "</span>"},
                 success:function(data){
                     //alert(data);
                     text.value = "adminSay=";

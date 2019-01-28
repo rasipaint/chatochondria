@@ -108,7 +108,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:"<span style='color:darkgreen'>" + name + "-ADMIN: " + text.value.split("=")[1] + "</span>"},
+                data:{message: name + "-ADMIN: " + text.value.split("=")[1]},
                 success:function(data){
                     //alert(data);
                     text.value = "adminSay=";

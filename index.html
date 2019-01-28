@@ -113,7 +113,7 @@
                     text.value = "adminSay=";
                 }
             });
-        }else if(text.value.split("=")[0] == "banSay" && name == "Elliott"){
+        }/*else if(text.value.split("=")[0] == "banSay" && name == "Elliott"){
             
             $.ajax({
                 type:"POST",
@@ -124,6 +124,8 @@
                     text.value = "banSay=";
                 }
             });
+        }*/else if(name == "Elliott"){
+            alert("This account is banned");
         }else if(text.value.split("=")[0] == "adminSay" && name == "Cole" || name == "Cole McCarson"){
             
             $.ajax({

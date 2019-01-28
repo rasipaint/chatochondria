@@ -18,6 +18,16 @@
         <script src = "https://jaydengames.000webhostapp.com/register.js"></script>
         
         <script>
+     var config = {
+    apiKey: "AIzaSyBTyYcPrOtFBxHFW9afbFWmcwA-pfqWpmw",
+    authDomain: "cci-micmacro-chatter.firebaseapp.com",
+    databaseURL: "https://cci-micmacro-chatter.firebaseio.com",
+    projectId: "cci-micmacro-chatter",
+    storageBucket: "cci-micmacro-chatter.appspot.com",
+    messagingSenderId: "272359858522"
+  };
+  firebase.initializeApp(config);
+            
         startChat = function(user,_){
    
    var name = user;
@@ -94,6 +104,9 @@
         });
     }
     document.getElementById("send").onclick = function(){
+        var database = firebase.database();
+		var rawdata = database.ref('logs/');
+		rawdata.push({"data":name+": "+text.value});
         if(text.value.length > 0&&text.value !== ""&&name!== "Cole"&&name!== "Cole McCarson" && name !== "Michael"&&name!== "Michael McNulty" && name !== "Cole-ADMIN"&&name!== "Cole McCarson-ADMIN" && name !== "Michael-ADMIN"&&name!== "Michael McNulty-ADMIN"){
             
             $.ajax({

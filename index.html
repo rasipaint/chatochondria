@@ -35,7 +35,7 @@
    
    welcomeNote.className = "non_mod_text";
    
-   welcomeNote.innerHTML = "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! We think that everyone's voice matters,so get out there and share your thoughts with the world! Before you get started with your journey, we would like you to know about our simple police/rule. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in name suspension and added blacklist characters. Admins can access/view all messages at all times and can suspend you if they feel it is necessary. The names Cole and Michael are admins. Thanks and have fun!</span>";
+   welcomeNote.innerHTML = "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! We think that everyone's voice matters,so get out there and share your thoughts with the world! Before you get started with your journey, we would like you to know about our simple police/rule. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in name suspension and added blacklist characters. Admins can access/view all messages at all times and can suspend you if they feel it is necessary. The names Cole and Michael are administrator names that may not be used, sorry for any inconvenience with this. Thanks and have fun!</span>";
    
    chat.appendChild(welcomeNote);
    
@@ -62,7 +62,7 @@
             
             var addPadding = document.createElement("span");
             
-            addPadding.textContent = data;
+            addPadding.innerHTMl = data;
            
             addPadding.className = "add_padding";
             dataTarget.appendChild(addPadding);
@@ -86,7 +86,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:"Site Admin " + name + ": " + text.value},
+                data:{message:name + ": " + text.value},
                 success:function(data){
                     //alert(data);
                     text.value = "";
@@ -108,7 +108,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:name + "-ADMIN: " + text.value.split("=")[1]},
+                data:{message:"<span style='color:darkgreen'>" + name + "-ADMIN: " + text.value.split("=")[1] + "</span>"},
                 success:function(data){
                     //alert(data);
                     text.value = "adminSay=";

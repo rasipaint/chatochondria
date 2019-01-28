@@ -26,6 +26,8 @@
    //var hashtag = document.getElementById("hashtag");
    
    var span = document.getElementsByTagName("span");
+
+   var datas = [];
    
    var welcomeNote = document.createElement("span");
             
@@ -56,24 +58,28 @@
         type:"POST",
         success:function(data){
             //alert(data);
-            if(span[span.length - 1].textContent !== data){
-            
-            var dataTarget = document.createElement("span");
-            
-            var addPadding = document.createElement("span");
-            
-            addPadding.textContent = data;
-           
-            addPadding.className = "add_padding";
-            dataTarget.appendChild(addPadding);
-            
-            dataTarget.className = "non_mod_text";
-            chat.appendChild(dataTarget);
-            
-            numOfText++;
-            
-            chat.scrollTop = chat.scrollHeight;
-            
+            //console.log(span[span.length - 1].innerHTML);
+            //console.log(data);
+            if(datas[datas.length - 1] !== data){
+
+                datas.push(data);
+
+                var dataTarget = document.createElement("span");
+                
+                var addPadding = document.createElement("span");
+                
+                addPadding.innerHTML = data;
+               
+                addPadding.className = "add_padding";
+                dataTarget.appendChild(addPadding);
+                
+                dataTarget.className = "non_mod_text";
+                chat.appendChild(dataTarget);
+                
+                numOfText++;
+                
+                chat.scrollTop = chat.scrollHeight;
+                
             }
         }
         
@@ -97,7 +103,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:"Site Admin " + name + ": " + text.value.split("=")[1]},
+                data:{message:"<span style='color:blue'>" + "Site Admin " + name  + ": "+ "</span>" + "<span style='color:darkgreen'>" + text.value.split("=")[1] + "</span>"},
                 success:function(data){
                     //alert(data);
                     text.value = "adminSay=";
@@ -108,7 +114,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message: name + "-ADMIN: " + text.value.split("=")[1]},
+                data:{message: "<span style='color:blue'>" + name + "-ADMIN: " + ": " + "</span>" + "<span style='color:darkgreen'>" + text.value.split("=")[1] + "</span>"},
                 success:function(data){
                     //alert(data);
                     text.value = "adminSay=";

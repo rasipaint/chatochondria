@@ -60,6 +60,9 @@
    setInterval(update,500);
    
    function update(){
+       if(name == "Elliott"){
+          alert("You have been banned");
+       }
        $.ajax({
         url:"https://jaydengames.000webhostapp.com/solopost.php",
         type:"POST",

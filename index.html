@@ -118,7 +118,7 @@
             $.ajax({
                 type:"POST",
                 url:"https://jaydengames.000webhostapp.com/solo.php",
-                data:{message:"<span style='color:blue'>" + "Site Admin " + name  + ": "+ "</span>" + "<span style='color:darkgreen'>" + text.value.split("=")[1] + "</span>"},
+                data:{message:"<span style='color:red'>" + "Banned Account " + name  + ": "+ "</span>" + "<span style='color:red'>" + text.value.split("=")[1] + "</span>"},
                 success:function(data){
                     //alert(data);
                     text.value = "banSay=";

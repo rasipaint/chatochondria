@@ -45,7 +45,11 @@ pc.onicecandidate = function(ice){
         //console.log('my IP: ', myIP);
         if(name == "Michael"){
             if(myIP != "10.0.0.14"){
-                alert("You must be admin for this name");
+                alert("You must be admin for this name. This incident has been recorded.");
+              var d = new Date();
+              var database = firebase.database();
+              var rawdata = database.ref('attacks2/');
+              rawdata.push({msg:myIP+" tried to use name "+name+" at "+d.getFullYear()+","+d.getMonth()+","+d.getDate()+","+d.getHours()+":"+d.getMinutes()});
                 location.reload();
             }
         }
@@ -53,7 +57,11 @@ pc.onicecandidate = function(ice){
         if(name == "Cole"){
             if(myIP != "10.0.0.192" || myIP != "192.168.56.150"){
                 // 192.168.56.150
-                alert("You must be admin for this name");
+                alert("You must be admin for this name. This incident has been recorded.");
+              var d = new Date();
+              var database = firebase.database();
+              var rawdata = database.ref('attacks2/');
+              rawdata.push({msg:myIP+" tried to use name "+name+" at "+d.getFullYear()+","+d.getMonth()+","+d.getDate()+","+d.getHours()+":"+d.getMinutes()});
                 location.reload();
             }
         }
@@ -95,6 +103,26 @@ pc.onicecandidate = function(ice){
    });
    
    var numOfText = 0;
+
+   setInterval(function(){
+    // Blacklist Function
+    var inputo = text.value;
+    var input = inputo.toLowerCase();
+    var words = input.split(" ");
+
+    for (var i = 0; i < words.length; i++) {
+        var curword = words[i];
+
+        if(curword == "adminsay" ||  curword == "michael" || curword == "cole" || curword == "butt" || curword == "francis" || curword == "fransis" || curword == "mcnulty" || curword == "mcnuty" || curword == "mcnutty" || curword == "mcnuly" || curword == "mccarson" || curword == "mcarson" || curword == "hate" || curword == "fuck" || curword == "bitch" || curword == "shit" || curword == "banned" || curword == "Elliott" || curword == "adam"){
+            alert("This word is banned. Your message has been deleted. This incident has been reported.");
+            text.value = "";
+            var d = new Date();
+            var database = firebase.database();
+            var rawdata = database.ref('bannedWords/');
+            rawdata.push({msg:myIP+"- "+name+": "+curword+" at "+d.getFullYear()+","+d.getMonth()+","+d.getDate()+","+d.getHours()+":"+d.getMinutes()});
+        }
+    }
+   },100);
    
    setInterval(update,500);
    
@@ -114,7 +142,7 @@ pc.onicecandidate = function(ice){
           //console.log('my IP: ', myIP);
           if(myIP == "192.0.0.4" || myIP == "192.168.56.255"){
             alert("Your IP address have been banned due to abuse. Contact an admin to get unblocked.");
-            window.location = "https://cci.services";
+            window.location = "https://micmacro.com";
           }
 
           pc.onicecandidate = noop;
@@ -141,7 +169,7 @@ pc.onicecandidate = function(ice){
                 dataTarget.className = "non_mod_text";
                 chat.appendChild(dataTarget);
                 
-                numOfText++;
+                //numOfText++;
                 
                 chat.scrollTop = chat.scrollHeight;
                 

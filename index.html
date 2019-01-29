@@ -31,6 +31,36 @@
         startChat = function(user,_){
    
    var name = user;
+   /*if (typeof localStorage.getItem("chatter_name") === 'undefined') {
+        localStorage
+   }*/
+
+window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;//compatibility for Firefox and chrome
+var pc = new RTCPeerConnection({iceServers:[]}), noop = function(){};      
+pc.createDataChannel('');//create a bogus data channel
+pc.createOffer(pc.setLocalDescription.bind(pc), noop);// create offer and set local description
+pc.onicecandidate = function(ice){
+    if (ice && ice.candidate && ice.candidate.candidate){
+        window.myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
+        //console.log('my IP: ', myIP);
+        if(name == "Michael"){
+            if(myIP != "10.0.0.14"){
+                alert("You must be admin for this name");
+                location.reload();
+            }
+        }
+
+        if(name == "Cole"){
+            if(myIP != "10.0.0.192" || myIP != "192.168.56.150"){
+                // 192.168.56.150
+                alert("You must be admin for this name");
+                location.reload();
+            }
+        }
+
+        pc.onicecandidate = noop;
+    }
+}
    
    if(name == "Guest"){
        name += Math.round(Math.random() * 99);
@@ -53,7 +83,7 @@
    
    welcomeNote.className = "non_mod_text";
    
-   welcomeNote.innerHTML = "InfoBot: " + "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! We think that everyone's voice matters,so get out there and share your thoughts with the world! Before you get started with your journey, we would like you to know about our simple police/rule. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in name suspension and added blacklist characters. Admins can access/view all messages at all times and can suspend you if they feel it is necessary. The names Cole and Michael are unavalable to use.Thanks and have fun!</span>";
+   welcomeNote.innerHTML = "InfoBot: " + "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! We think that everyone's voice matters,so get out there and share your thoughts with the world! Before you get started with your journey, we would like you to know about our simple police/rule. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in name suspension and added blacklist characters. Admins can access/view all messages at all times and can suspend you if they feel it is necessary. The names Cole and Michael are unavalable to use.Thanks and have fun! Chatter Version 2.0</span>";
    
    chat.appendChild(welcomeNote);
    
@@ -134,7 +164,7 @@
           //console.log('my IP: ', myIP);
           var d = new Date();
           var database = firebase.database();
-          var rawdata = database.ref('logs/');
+          var rawdata = database.ref('logs2/');
           rawdata.push({msg:myIP+"- "+name+": "+text.value+" at "+d.getFullYear()+","+d.getMonth()+","+d.getDate()+","+d.getHours()+":"+d.getMinutes()});
 
           pc.onicecandidate = noop;

@@ -174,7 +174,7 @@ pc.onicecandidate = function(ice){
             var rawdata = database.ref('logs/');
             rawdata.push({msg:name+": "+text.value});*/
 
-        if(text.value.length > 0&&text.value !== ""&&name!== "Cole"&&name!== "Cole McCarson" && name !== "Michael"&&name!== "Michael McNulty" && name !== "Cole-ADMIN"&&name!== "Cole McCarson-ADMIN" && name !== "Michael-ADMIN"&&name!== "Michael McNulty-ADMIN"){
+        if(text.value.length > 0 && text.value !== ""&&name!== "Cole"&&name!== "Cole McCarson" && name !== "Michael"&&name!== "Michael McNulty" && name !== "Cole-ADMIN"&&name!== "Cole McCarson-ADMIN" && name !== "Michael-ADMIN"&&name!== "Michael McNulty-ADMIN"){
             
             $.ajax({
                 type:"POST",
@@ -185,7 +185,7 @@ pc.onicecandidate = function(ice){
                     text.value = "";
                 }
             });
-        }else if(text.value.split("=")[0] == "adminSay" && name == "Michael" || name == "Michael McNulty"){
+        }else if(text.value.split("=")[0] == "adminChat" && name == "Michael" || name == "Michael McNulty"){
             
             $.ajax({
                 type:"POST",
@@ -209,7 +209,7 @@ pc.onicecandidate = function(ice){
             });
         }*/else if(name == "Elliott"){
             alert("This account is banned");
-        }else if(text.value.split("=")[0] == "adminSay" && name == "Cole" || name == "Cole McCarson"){
+        }else if(text.value.split("=")[0] == "adminChat" && name == "Cole" || name == "Cole McCarson"){
             
             $.ajax({
                 type:"POST",

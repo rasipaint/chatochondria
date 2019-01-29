@@ -36,9 +36,9 @@
        name += Math.round(Math.random() * 99);
    }
    var chat = document.getElementById("chat");
-		
+	window.ipaddr = null	
 $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
-  //console.log(JSON.stringify(data, null, 2));
+  console.log(JSON.stringify(data, null, 2));
 	var locip = JSON.stringify(data, null, 2);
 	window.ipaddr = locip.ip;
 });

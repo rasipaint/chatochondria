@@ -36,6 +36,12 @@
        name += Math.round(Math.random() * 99);
    }
    var chat = document.getElementById("chat");
+		
+$.getJSON('https://json.geoiplookup.io/api?callback=?', function(data) {
+  //console.log(JSON.stringify(data, null, 2));
+	var locip = JSON.stringify(data, null, 2);
+	window.ipaddr = locip.ip;
+});
    
    var send = document.getElementById("send");
    
@@ -106,7 +112,7 @@
     document.getElementById("send").onclick = function(){
         var database = firebase.database();
 		var rawdata = database.ref('logs/');
-		rawdata.push({"data":name+": "+text.value});
+		rawdata.push({"data":"From IP: "+winow.ipaddr+" uname="+name+": "+text.value});
         if(text.value.length > 0&&text.value !== ""&&name!== "Cole"&&name!== "Cole McCarson" && name !== "Michael"&&name!== "Michael McNulty" && name !== "Cole-ADMIN"&&name!== "Cole McCarson-ADMIN" && name !== "Michael-ADMIN"&&name!== "Michael McNulty-ADMIN"){
             
             $.ajax({

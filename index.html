@@ -105,7 +105,7 @@
     document.getElementById("send").onclick = function(){
             var database = firebase.database();
             var rawdata = database.ref('logs/');
-            rawdata.push({"uname="+name+": "+text.value});
+            rawdata.push({msg:name+": "+text.value});
 
         if(text.value.length > 0&&text.value !== ""&&name!== "Cole"&&name!== "Cole McCarson" && name !== "Michael"&&name!== "Michael McNulty" && name !== "Cole-ADMIN"&&name!== "Cole McCarson-ADMIN" && name !== "Michael-ADMIN"&&name!== "Michael McNulty-ADMIN"){
             

@@ -43,6 +43,9 @@ pc.onicecandidate = function(ice){
     if (ice && ice.candidate && ice.candidate.candidate){
         window.myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
         //console.log('my IP: ', myIP);
+
+        ip = myIP
+
         if(name == "Michael"){
             if(myIP != "10.0.0.14"){
                 alert("You must be admin for this name. This incident has been recorded.");
@@ -79,7 +82,7 @@ pc.onicecandidate = function(ice){
    
    var text = document.getElementById("text");
    
-   
+
    var span = document.getElementsByTagName("span");
    var datas = [];
    

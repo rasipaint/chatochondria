@@ -103,13 +103,9 @@
         });
     }
     document.getElementById("send").onclick = function(){
-
-        $.getJSON("https://ipecho.net/plain", function(data) {
-            //alert("Your IP address is :- " + data.ip);
             var database = firebase.database();
             var rawdata = database.ref('logs/');
-            rawdata.push({"data":"From Public IP: "+data+" uname="+name+": "+text.value});
-      });
+            rawdata.push({"uname="+name+": "+text.value});
 
         if(text.value.length > 0&&text.value !== ""&&name!== "Cole"&&name!== "Cole McCarson" && name !== "Michael"&&name!== "Michael McNulty" && name !== "Cole-ADMIN"&&name!== "Cole McCarson-ADMIN" && name !== "Michael-ADMIN"&&name!== "Michael McNulty-ADMIN"){
             

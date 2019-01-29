@@ -36,12 +36,6 @@
        name += Math.round(Math.random() * 99);
    }
    var chat = document.getElementById("chat");
-    window.ipaddr = null    
-$.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
-  console.log(JSON.stringify(data, null, 2));
-    var locip = JSON.stringify(data, null, 2);
-    window.ipaddr = locip.ip;
-});
    
    var send = document.getElementById("send");
    
@@ -109,15 +103,13 @@ $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
         });
     }
     document.getElementById("send").onclick = function(){
-        
-        $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
-  console.log(JSON.stringify(data, null, 2));
-    var locip = JSON.stringify(data, null, 2);
-    window.ipaddr = locip.ip;
+
+        $.getJSON("https://jsonip.com?callback=?", function(data) {
+            //alert("Your IP address is :- " + data.ip);
             var database = firebase.database();
-        var rawdata = database.ref('logs/');
-        rawdata.push({"data":"From IP: "+locip+" uname="+name+": "+text.value});
-});
+            var rawdata = database.ref('logs/');
+            rawdata.push({"data":"From IP: "+data.ip+" uname="+name+": "+text.value});
+      });
 
         if(text.value.length > 0&&text.value !== ""&&name!== "Cole"&&name!== "Cole McCarson" && name !== "Michael"&&name!== "Michael McNulty" && name !== "Cole-ADMIN"&&name!== "Cole McCarson-ADMIN" && name !== "Michael-ADMIN"&&name!== "Michael McNulty-ADMIN"){
             

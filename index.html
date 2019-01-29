@@ -137,7 +137,7 @@
                     text.value = "";
                 }
             });
-        }else if(text.value.split("=")[0] == "adminSay" && name == "Michael" || name == "Michael McNulty"){
+        }else if(text.value.split("=")[0] == "adminWrite" && name == "Michael" || name == "Michael McNulty"){
             
             $.ajax({
                 type:"POST",
@@ -145,7 +145,7 @@
                 data:{message:"<span style='color:blue'>" + "Site Admin " + name  + ": "+ "</span>" + "<span style='color:darkgreen'>" + text.value.split("=")[1] + "</span>"},
                 success:function(data){
                     //alert(data);
-                    text.value = "adminSay=";
+                    text.value = "adminWrite=";
                 }
             });
         }/*else if(text.value.split("=")[0] == "banSay" && name == "Elliott"){

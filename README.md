@@ -1,4 +1,4 @@
-# Chatter
+# Chatter: go to chatter.cci.services
 
 visit: cci.services and micmacro.com
 

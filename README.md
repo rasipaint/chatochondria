@@ -1,6 +1,6 @@
 # Chatter
 
-visit: chat.cci.services and micmacro.com
+visit: cci.services and micmacro.com
 
 Hosted By cci.services and github.com
 

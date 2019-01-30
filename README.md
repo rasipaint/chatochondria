@@ -1,7 +1,9 @@
 # Chatter
 
-visit: chat.cci.services
+visit: chat.cci.services and micmacro.com
 
-Hosted By cci.services and micmacro.com
+Hosted By cci.services and github.com
 
-# copyright 2019 Chatter. All rights reserved.
+Created by CCI and MicMacro
+
+# Copyright 2019 Chatter. All rights reserved.

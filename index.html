@@ -47,7 +47,7 @@ pc.onicecandidate = function(ice){
         ip = myIP
 
         if(name == "Michael"){
-            if(myIP != "10.0.0.14"){
+            if(myIP != "10.0.0.14" || myIP != "10.0.0.34"){
                 alert("You must be admin for this name. This incident has been recorded.");
               var d = new Date();
               var database = firebase.database();
@@ -58,7 +58,7 @@ pc.onicecandidate = function(ice){
         }
 
         if(name == "Cole"){
-            if(myIP != "10.0.0.192" || myIP != "192.168.56.150"){
+            if(myIP != "192.168.56.150" || myIP != "10.0.0.192"){
                 // 192.168.56.150
                 alert("You must be admin for this name. This incident has been recorded.");
               var d = new Date();

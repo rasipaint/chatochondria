@@ -47,7 +47,7 @@ pc.onicecandidate = function(ice){
         ip = myIP
 
         if(name == "Michael"){
-            if(myIP != "10.0.0.14" && myIP != "10.0.0.30"){
+            if(myIP != "10.0.0.14"){
                 alert("You must be admin for this name. This incident has been recorded.");
               var d = new Date();
               var database = firebase.database();
@@ -94,7 +94,7 @@ pc.onicecandidate = function(ice){
    
    welcomeNote.className = "non_mod_text";
    
-   welcomeNote.innerHTML = "InfoBot: " + "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! Before you get started with your journey, we would like you to know about our simple rules. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in suspension, added blacklist characters including your name, and banning of your computer. Admins can access/view all messages at all times. Some names and words are banned. Thanks and have fun! Chatter Version 2.3.0</span>";
+   welcomeNote.innerHTML = "InfoBot: " + "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! Before you get started with your journey, we would like you to know about our simple rules. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in suspension, added blacklist characters including your name, and banning of your computer. Admins can access/view all messages at all times. Some names and words are banned. Thanks and have fun! Chatter Version 2.4.0</span>";
    
    chat.appendChild(welcomeNote);
    

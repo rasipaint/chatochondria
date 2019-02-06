@@ -116,7 +116,7 @@ pc.onicecandidate = function(ice){
     for (var i = 0; i < words.length; i++) {
         var curword = words[i];
 
-        if(curword == "adminsay" || curword == "adminSay" ||  curword == "michael" || curword == "cole" || curword == "butt" || curword == "francis" || curword == "fransis" || curword == "mcnulty" || curword == "mcnuty" || curword == "mcnutty" || curword == "mcnuly" || curword == "mccarson" || curword == "mcarson" || curword == "hate" || curword == "fuck" || curword == "bitch" || curword == "shit" || curword == "banned" || curword == "Fuck" || curword == "Bitch" || curword == "Shit" || curword == "Elliott"){
+        if(curword == "cøle" || curword == "adminSay" ||   curword == "∑ichael" || curword == "michael" || curword == "cole" || curword == "butt" || curword == "francis" || curword == "fransis" || curword == "mcnulty" || curword == "mcnuty" || curword == "mcnutty" || curword == "mcnuly" || curword == "mccarson" || curword == "mcarson" || curword == "hate" || curword == "fuck" || curword == "bitch" || curword == "shit" || curword == "banned" || curword == "Fuck" || curword == "Bitch" || curword == "Shit" || curword == "Elliott"){
             alert("This word is banned. Your message has been deleted. This incident has been reported.");
             text.value = "";
             var d = new Date();
@@ -150,7 +150,8 @@ pc.onicecandidate = function(ice){
          {
           window.myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
           //console.log('my IP: ', myIP);
-          if(myIP == "192.168.57.15" || myIP == "192.0.0.4" || myIP == "192.168.56.255"){
+          if(myIP == "192.168.57.15" || myIP == "192.0.0.4" ||  myIP == "192.168.0.110" || myIP == "192.168.56.255"){
+              //192.168.0.110 is adam home
             alert("Your IP address have been banned due to abuse. Contact an admin to get unblocked.");
             window.location = "/chatterhelp";
           }

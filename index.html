@@ -210,7 +210,7 @@ pc.onicecandidate = function(ice){
           //console.log('my IP: ', myIP);
           var d = new Date();
           var database = firebase.database();
-          var rawdata = database.ref('logs2/');
+          var rawdata = database.ref('logs3/');
           rawdata.push({msg:myIP+"- "+name+": "+text.value+" at "+d.getFullYear()+","+d.getMonth()+","+d.getDate()+","+d.getHours()+":"+d.getMinutes()});
 
           pc.onicecandidate = noop;

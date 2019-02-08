@@ -2,6 +2,29 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#mySidenav a {
+  position: absolute;
+  left: -80px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 80px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#about {
+  top: 75px;
+  background-color: #4CAF50;
+}
+</style>
         <!-- Global site tag (gtag.js) - Google Analytics  -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133430882-1"></script>
 <script>
@@ -354,6 +377,9 @@ body {margin:0;}
 }
 </style>
 <body>
+    <div id="mySidenav" class="sidenav">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKClkXfiJ-VkkaGgJrKwZf4H22Ff5-ba6DpSjbwzo8tRQ6yg/viewform" id="about">Submit an Idea</a>
+</div>
 
 <div class="icon-bar">
   <a href="https://github.com/colecci" class="github"><i class="fa fa-github"></i></a> 

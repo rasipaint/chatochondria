@@ -144,7 +144,7 @@ pc.onicecandidate = function(ice){
             text.value = "";
             var d = new Date();
             var database = firebase.database();
-            var rawdata = database.ref('homebannedWords/');
+            var rawdata = database.ref('homebannedWords2/');
             rawdata.push({msg:myIP+"- "+name+": "+curword+" at "+d.getFullYear()+","+d.getMonth()+","+d.getDate()+","+d.getHours()+":"+d.getMinutes()});
         }
 
@@ -233,7 +233,7 @@ pc.onicecandidate = function(ice){
           //console.log('my IP: ', myIP);
           var d = new Date();
           var database = firebase.database();
-          var rawdata = database.ref('homelogs5/');
+          var rawdata = database.ref('logs6/');
           rawdata.push({msg:myIP+"- "+name+": "+text.value+" at "+d.getFullYear()+","+d.getMonth()+","+d.getDate()+","+d.getHours()+":"+d.getMinutes()});
 
           pc.onicecandidate = noop;

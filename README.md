@@ -1,9 +1,2 @@
-# Chatter: go to usechatter.com
-
-visit: cci.services and micmacro.com
-
-Hosted By cci.services and github.com
-
-Created by CCI and MicMacro
-
-# Copyright 2019 Chatter. All rights reserved.
+# Chatochondria
+Github Pages: https://rasipaint.github.io/chatochondria

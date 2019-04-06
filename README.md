@@ -10,6 +10,7 @@ Created by CCI and MicMacro <br>
 # Copyright 2019 Chatter. All rights reserved.
 
 CHECK OUT THE MAKERS OF CHATTER:
+<br>
 @colecci <br>
 @micmacro <br>
 @CCICompany <br>

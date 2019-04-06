@@ -12,8 +12,8 @@ Created by CCI and MicMacro <br>
 CHECK OUT THE MAKERS OF CHATTER:
 <br>
 @colecci <br>
-@micmacro <br>
+@MicMacro <br>
 @CCICompany <br>
 @michaelfm1211 <br>
-@rasipaint <br>
+@Rasipaint <br>
 @ranjitrasipaint <br>

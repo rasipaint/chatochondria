@@ -259,6 +259,16 @@ input{
               var credential = error.credential;
               // ...
           });
+            
+            window.onbeforeunload = function(){
+               if(login == true){
+                   $.ajax({
+                       type:"GET",
+                       url:"https://chatochondria.000webhostapp.com/openchat.php?ver=verbeta&q=" + window.name + " has left the chat"
+                    });
+                  firebase.auth().signOut();
+               }
+            }
 
            //var name = prompt("What is your name");
            /*if (typeof localStorage.getItem("chatter_name") === 'undefined') {

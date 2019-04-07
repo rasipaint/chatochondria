@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Chatter 3.0</title>
+        <title>Chatochondria</title>
         <link rel="shortcut icon" type="image/png" href="logofavicon.png"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
@@ -198,6 +198,7 @@ input{
         <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
         <script id='pixel-script-poptin' src='https://cdn.popt.in/pixel.js?id=de951cc5caf50' async='true'></script> 
         <script>
+          var prev = "";
           var login = false;
           var config = {
             apiKey: "AIzaSyBTyYcPrOtFBxHFW9afbFWmcwA-pfqWpmw",
@@ -319,30 +320,33 @@ input{
                   url:"https://chatochondria.000webhostapp.com/openchat.php?ver=verbeta",
                   type:"GET",
                   success:function(data){
-                    document.getElementById("chat").innerHTML = "";
-                    welcomeNote.className = "non_mod_text";
+                    if(prev != data){
+                      document.getElementById("chat").innerHTML = "";
+                      welcomeNote.className = "non_mod_text";
 
-                    welcomeNote.innerHTML = "InfoBot: " + "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! Before you get started with your journey, we would like you to know about our simple rules. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in suspension, added blacklist characters including your name, and banning of your computer. Admins can access/view all messages at all times. Some names and words are banned. Thanks and have fun! Chatter Version 3.0</span>";
+                      welcomeNote.innerHTML = "InfoBot: " + "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! Before you get started with your journey, we would like you to know about our simple rules. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in suspension, added blacklist characters including your name, and banning of your computer. Admins can access/view all messages at all times. Some names and words are banned. Thanks and have fun! Chatter Version 3.0</span>";
 
-                    chat.appendChild(welcomeNote);
+                      chat.appendChild(welcomeNote);
 
-                    ds = data.split("_NXT_MSG_");
+                      ds = data.split("_NXT_MSG_");
 
-                    for (var i = 0; i < ds.length; i++) {
-                      var dataTarget = document.createElement("span");
-                      var addPadding = document.createElement("span");
-                      addPadding.innerHTML = ds[i];
+                      for (var i = 0; i < ds.length; i++) {
+                        var dataTarget = document.createElement("span");
+                        var addPadding = document.createElement("span");
+                        addPadding.innerHTML = ds[i];
 
-                      addPadding.className = "add_padding";
-                      addPadding.style.overflow = "auto";
-                      dataTarget.appendChild(addPadding);
+                        addPadding.className = "add_padding";
+                        addPadding.style.overflow = "auto";
+                        dataTarget.appendChild(addPadding);
 
-                      dataTarget.className = "non_mod_text";
-                      chat.appendChild(dataTarget);
+                        dataTarget.className = "non_mod_text";
+                        chat.appendChild(dataTarget);
 
-                      chat.scrollTop = chat.scrollHeight;
+                          chat.scrollTop = chat.scrollHeight;
+
+                      } 
                     }
-
+                    prev = data;
                     }
 
                     });

@@ -175,11 +175,12 @@ input{
         
         <div id = "nav">
             <span id="hey"></span>
+            <button id="tc">Login with Google</button>
         </div>
         <div id = "wrap"></div>
         <div id = "chat"></div>
         <div id = "panel">
-            <input id = "text" placeholder = "Hey! Don't Just Sit There, Join The Conversation!">
+            <input id = "text" placeholder = "You must be logged in to post">
             <div id = "send"></div>
             
         </div>
@@ -197,6 +198,7 @@ input{
         <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
         <script id='pixel-script-poptin' src='https://cdn.popt.in/pixel.js?id=de951cc5caf50' async='true'></script> 
         <script>
+          var login = false;
           var config = {
             apiKey: "AIzaSyBTyYcPrOtFBxHFW9afbFWmcwA-pfqWpmw",
             authDomain: "cci-micmacro-chatter.firebaseapp.com",
@@ -207,7 +209,57 @@ input{
           };
           firebase.initializeApp(config);
 
-           var name = prompt("What is your name");
+          var provider = new firebase.auth.GoogleAuthProvider();
+
+          var tc = document.getElementById("tc");
+
+          tc.onclick = function(){
+            if(login == false){
+              firebase.auth().signInWithRedirect(provider);
+            }else if(login == true){
+              $.ajax({
+                   type:"GET",
+                   url:"https://chatochondria.000webhostapp.com/openchat.php?ver=verbeta&q=" + result.user.displayName + " has left the chat"
+               });
+              firebase.auth().signOut().then(function() {
+                window.login = false;
+                document.getElementById("hey").innerHTML = "";
+                window.name = "Guest";
+                tc.innerHTML = "Login with Google"
+                document.getElementById("text").placeholder = "You must be logged in to post";
+              })
+            }
+          }
+
+          firebase.auth().getRedirectResult().then(function(result) {
+            if (result.credential) {
+              // This gives you a Google Access Token. You can use it to access the Google API.
+              var token = result.credential.accessToken;
+              // ...
+              window.login = true;
+              document.getElementById("hey").innerHTML = "Hello, " + result.user.displayName;
+              window.name = result.user.displayName;
+              window.user = result.user;
+              tc.innerHTML = "Logout"
+              document.getElementById("text").placeholder = "Come On, Join the Conversation!";
+              $.ajax({
+                   type:"GET",
+                   url:"https://chatochondria.000webhostapp.com/openchat.php?ver=verbeta&q=" + result.user.displayName + " has joined the chat"
+               });
+            }
+              // other stuff here
+            }).catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              // The email of the user's account used.
+              var email = error.email;
+              // The firebase.auth.AuthCredential type that was used.
+              var credential = error.credential;
+              // ...
+          });
+
+           //var name = prompt("What is your name");
            /*if (typeof localStorage.getItem("chatter_name") === 'undefined') {
                 localStorage
            }*/
@@ -226,12 +278,12 @@ input{
 
                var welcomeNote = document.createElement("span");
 
-                document.getElementById("hey").innerHTML = "Hello, " + name + "!";
+                //document.getElementById("hey").innerHTML = "Hello, " + name + "!";
 
-               $.ajax({
+               /*$.ajax({
                    type:"GET",
                    url:"https://chatochondria.000webhostapp.com/openchat.php?ver=verbeta&q=" + name + " has joined the chat"
-               });
+               });*/
 
                setInterval(function(){
                 // Blacklist Function
@@ -298,7 +350,7 @@ input{
                 }
                 document.getElementById("send").onclick = function(){
 
-                    if(text.value.length > 0){
+                    if(text.value.length > 0 && login == true){
 
                         $.ajax({
                             type:"GET",

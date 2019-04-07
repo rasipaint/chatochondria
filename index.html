@@ -220,7 +220,7 @@ input{
             }else if(login == true){
               $.ajax({
                    type:"GET",
-                   url:"https://chatochondria.000webhostapp.com/openchat.php?ver=verbeta&q=" + result.user.displayName + " has left the chat"
+                   url:"https://chatochondria.000webhostapp.com/openchat.php?ver=verbeta&q=" + window.name + " has left the chat"
                });
               firebase.auth().signOut().then(function() {
                 window.login = false;

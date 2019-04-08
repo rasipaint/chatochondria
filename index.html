@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Chatter 3.1</title>
+        <title>Chatter 2.1</title>
         <link rel="shortcut icon" type="image/png" href="logofavicon.png"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
@@ -169,7 +169,7 @@ input{
         <div id = "wrap"></div>
         <div id = "chat"></div>
         <div id = "panel">
-            <input id = "text" placeholder = "You must be logged in to post">
+            <input id = "text" placeholder = "Please login to post!">
             <div id = "send"></div>
             
         </div>
@@ -303,7 +303,7 @@ input{
                     if(prev != data){
                       document.getElementById("chat").innerHTML = "";
                       welcomeNote.className = "non_mod_text";
-                      welcomeNote.innerHTML = "InfoBot: " + "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! Before you get started with your journey, we would like you to know about our simple rules. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in suspension, added blacklist characters including your name, and banning of your computer. Admins can access/view all messages at all times. Some names and words are banned. Thanks and have fun! Chatter Version 3.1</span>";
+                      welcomeNote.innerHTML = "Chatter API: " + "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! Before you get started with your journey, we would like you to know about our simple rules. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in suspension, added blacklist characters including your name, and banning of your computer. Admins can access/view all messages at all times. Some names and words are banned. Thanks and have fun! Chatter Version 3.1</span>";
                       chat.appendChild(welcomeNote);
                       ds = data.split("_NXT_MSG_");
                       for (var i = 0; i < ds.length; i++) {

@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Chatter 2.1</title>
+        <title>Chatter 3.1</title>
         <link rel="shortcut icon" type="image/png" href="logofavicon.png"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
@@ -17,9 +18,11 @@
   color: white;
   border-radius: 0 5px 5px 0;
 }
+
 #mySidenav a:hover {
   left: 0;
 }
+
 #about {
   top: 75px;
   background-color: #4CAF50;
@@ -31,6 +34,7 @@
   width: 4%;
 }
 body {margin:0;}
+
 .icon-bar {
   position: fixed;
   top: 50%;
@@ -38,6 +42,7 @@ body {margin:0;}
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
 .icon-bar a {
  border-radius: 25px;
   display: block;
@@ -47,9 +52,11 @@ body {margin:0;}
   color: white;
   font-size: 20px;
 }
+
 .icon-bar a:hover {
   background-color: #00FF00;
 }
+
 .github {
   background: #000;
   color: white;
@@ -59,14 +66,18 @@ body {margin:0;}
   background: #dd4b39;
   color: white;
 }
+
 .twitter {
   background: #55ACEE;
   color: white;
 }
+
+
 .youtube {
   background: #bb0000;
   color: white;
 }
+
 .content {
   margin-left: 75px;
   font-size: 30px;
@@ -164,12 +175,12 @@ input{
         
         <div id = "nav">
             <span id="hey"></span>
-            <button id="tc">Login with Google</button>
+            <button id="tc" style="background: none;border: none;width: 150px;padding: 0px"><img src="google.png" width="150px;"></button>
         </div>
         <div id = "wrap"></div>
         <div id = "chat"></div>
         <div id = "panel">
-            <input id = "text" placeholder = "Please login to post!">
+            <input id = "text" placeholder = "You must be logged in to post">
             <div id = "send"></div>
             
         </div>
@@ -198,8 +209,11 @@ input{
             messagingSenderId: "272359858522"
           };
           firebase.initializeApp(config);
+
           var provider = new firebase.auth.GoogleAuthProvider();
+
           var tc = document.getElementById("tc");
+
           tc.onclick = function(){
             if(login == false){
               firebase.auth().signInWithRedirect(provider);
@@ -213,10 +227,16 @@ input{
                 document.getElementById("hey").innerHTML = "";
                 window.name = "Guest";
                 tc.innerHTML = "Login with Google"
+                //style="background: none;border: none;width: 150px;padding: 0px"
+                tc.style.background = "none";
+                tc.style.border = "none";
+                tc.style.width = "150px";
+                tc.style.padding = "0px";
                 document.getElementById("text").placeholder = "You must be logged in to post";
               })
             }
           }
+
           firebase.auth().getRedirectResult().then(function(result) {
             if (result.credential) {
               // This gives you a Google Access Token. You can use it to access the Google API.
@@ -227,6 +247,10 @@ input{
               window.name = result.user.displayName;
               window.user = result.user;
               tc.innerHTML = "Logout"
+              tc.style.background = "white";
+              tc.style.border = "1px solid black";
+              tc.style.width = "50px";
+              tc.style.padding = "2px";
               document.getElementById("text").placeholder = "Come On, Join the Conversation!";
               $.ajax({
                    type:"GET",
@@ -254,30 +278,42 @@ input{
                   firebase.auth().signOut();
                }
             }
+
            //var name = prompt("What is your name");
            /*if (typeof localStorage.getItem("chatter_name") === 'undefined') {
                 localStorage
            }*/
+
                if(name == "Guest"){
                    name += Math.round(Math.random() * 99);
                }
                var chat = document.getElementById("chat");
+
                var send = document.getElementById("send");
+
                var text = document.getElementById("text");
+
+
                var span = document.getElementsByTagName("span");
+
                var welcomeNote = document.createElement("span");
+
                 //document.getElementById("hey").innerHTML = "Hello, " + name + "!";
+
                /*$.ajax({
                    type:"GET",
                    url:"https://chatochondria.000webhostapp.com/openchat.php?ver=verbeta&q=" + name + " has joined the chat"
                });*/
+
                setInterval(function(){
                 // Blacklist Function
                 var inputo = text.value;
                 var input = inputo.toLowerCase();
                 var words = input.split(" ");
+
                 for (var i = 0; i < words.length; i++) {
                     var curword = words[i];
+
                     if(curword == "cøle" ||   curword == "fuck'er" || curword == "michael" || curword == "cole" || curword == "butt" || curword == "francis" || curword == "fransis" || curword == "mcnulty" || curword == "mcnuty" || curword == "mcnutty" || curword == "mcnuly" || curword == "mccarson" || curword == "mcarson" || curword == "hate" || curword == "fuck" || curword == "bitch" || curword == "shit" || curword == "banned" || curword == "fuck" || curword == "bitch" || curword == "shit" || curword == "elliott"){
                         alert("This word is banned. Your message has been deleted. This incident has been reported.");
                         text.value = "";
@@ -286,6 +322,7 @@ input{
                         var rawdata = database.ref('homebannedWords2/');
                         rawdata.push({msg:myIP+"- "+name+": "+curword+" at "+d.getFullYear()+","+d.getMonth()+","+d.getDate()+","+d.getHours()+":"+d.getMinutes()});
                     }
+
                     if(name != "Cole" && name != "Michael"){
                         if(curword == "~"){
                             alert("This function is reserved for admins only.");
@@ -294,7 +331,9 @@ input{
                     }
                 }
                },100);
+
                setInterval(update,500);
+
                function update(){
                 $.ajax({
                   url:"https://chatochondria.000webhostapp.com/openchat.php?ver=verbeta",
@@ -303,28 +342,39 @@ input{
                     if(prev != data){
                       document.getElementById("chat").innerHTML = "";
                       welcomeNote.className = "non_mod_text";
-                      welcomeNote.innerHTML = "Chatter API: " + "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! Before you get started with your journey, we would like you to know about our simple rules. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in suspension, added blacklist characters including your name, and banning of your computer. Admins can access/view all messages at all times. Some names and words are banned. Thanks and have fun! Chatter Version 2.1</span>";
+
+                      welcomeNote.innerHTML = "InfoBot: " + "<span style = 'color:darkgreen;'>Hello there, welcome to Chatter! Before you get started with your journey, we would like you to know about our simple rules. You may not abuse this program with inappropriate/hurtful content. Failure to follow the rule will result in suspension, added blacklist characters including your name, and banning of your computer. Admins can access/view all messages at all times. Some names and words are banned. Thanks and have fun! Chatter Version 3.1</span>";
+
                       chat.appendChild(welcomeNote);
+
                       ds = data.split("_NXT_MSG_");
+
                       for (var i = 0; i < ds.length; i++) {
                         var dataTarget = document.createElement("span");
                         var addPadding = document.createElement("span");
                         addPadding.innerHTML = ds[i];
+
                         addPadding.className = "add_padding";
                         addPadding.style.overflow = "auto";
                         dataTarget.appendChild(addPadding);
+
                         dataTarget.className = "non_mod_text";
                         chat.appendChild(dataTarget);
+
                           chat.scrollTop = chat.scrollHeight;
+
                       } 
                     }
                     prev = data;
                     }
+
                     });
                    
                 }
                 document.getElementById("send").onclick = function(){
+
                     if(text.value.length > 0 && login == true){
+
                         $.ajax({
                             type:"GET",
                             url:"https://chatochondria.000webhostapp.com/openchat.php?ver=verbeta&q=" + name + ": " + text.value,
